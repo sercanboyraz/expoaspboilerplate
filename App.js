@@ -38,8 +38,10 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: 'bold',
           },
+          drawerStyle: { width: '100%', backgroundColor: '#c6cbef', width: 240 },
+          drawerType: 'permanent',
         }}>
-        <Drawer.Screen name="Dashboard" component={Dashboard} options={{ headerTitle: () => <HeaderLogo /> }} />
+        <Drawer.Screen name="Dashboard" component={Dashboard} options={{ headerTitle: () => <HeaderLogo />, headerShown: true }} />
         <Drawer.Screen name="Users" component={Users} />
         <Drawer.Screen name="Roles" component={Roles} />
       </Drawer.Navigator>
