@@ -8,6 +8,9 @@ import Users from './src/scenes/user/users';
 import Roles from './src/scenes/role/roles';
 import { appRouters } from './src/components/routers/router.config';
 import { screenOptionsStyle } from './src/style/styles';
+import { Provider } from 'mobx-react';
+import UserStore from './src/stores/userStore';
+import initializeStores from './src/stores/storeInitializer';
 
 function HeaderLogo({ title }) {
   return (
@@ -22,10 +25,12 @@ function HeaderLogo({ title }) {
 }
 
 
+const stores = initializeStores();
 const Drawer = createDrawerNavigator();
 const scheme = 'light';
 export default function App() {
   return (
+    <Provider {...stores} >
       <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Drawer.Navigator initialRouteName="Dashboard"
           screenOptions={screenOptionsStyle}
@@ -37,6 +42,6 @@ export default function App() {
           }
         </Drawer.Navigator>
       </NavigationContainer>
-
+    </Provider>
   );
 }

@@ -1,32 +1,31 @@
 import { inject, observer } from "mobx-react";
-import React from "react";
+import React, { Component } from "react";
 import { View, Text, Button } from "react-native";
-import { useUserStore, UserStoreContext, userStore } from '../../stores/userStore';
-import { create } from 'mobx-persist';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Navigation } from 'react-native-navigation';
+import UserStore from "../../stores/userStore";
+import Stores from "../../stores/storeIdentifier";
 
-async function hydrateStores() {
-    const hydrate = create({ storage: AsyncStorage });
-    await hydrate('UserStore', userStore);
+export interface IUsersProps {
+    userStore: UserStore
 }
 
-function Users() {
-    const { count, delayMessage, increment } = useUserStore();
-
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>{delayMessage}</Text>
-            <Text>{count}</Text>
-            <Button title="Dıkladınmı" onPress={increment} />
-        </View>
-    );
+export interface IUsersState {
+    data: string;
 }
 
-Navigation.events().registerAppLaunchedListener(() => {
-    hydrateStores().then(() => {
-        Users();
-    });
-});
-
+@inject(Stores.UserStore)
+@observer
+class Users extends Component<IUsersProps, IUsersState>{
+    state = {
+        data: "ssss"
+    }
+    render() {
+        // const { count, increment } = this.props.userStore;
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>{this.state.data}</Text>
+                <Button title="Dıkladınmı" onPress={() => { console.log("sercan"); this.setState({ data: "asdasd" }) }} />
+            </View>
+        );
+    }
+}
 export default Users;
