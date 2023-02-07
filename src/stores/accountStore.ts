@@ -1,5 +1,4 @@
 import { action, makeObservable, observable } from 'mobx';
-
 import IsTenantAvaibleOutput from '../services/account/dto/isTenantAvailableOutput';
 import accountService from '../services/account/accountService';
 
