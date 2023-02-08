@@ -6,36 +6,37 @@ const qs = require('qs');
 
 const http = axios.create({
   baseURL: AppConsts.appBaseUrl,
+  withCredentials: false,
   timeout: 160000,
   paramsSerializer: {
     encode: (params) => qs.stringify(params)
   },
 });
 
-// http.interceptors.request.use(
-//   function (config) {
-//     AsyncStorage.getItem('aspboilerplate:token').then((x: any) => {
-//       console.log("httpservice18" + x)
-//       if (x) {
-//         console.log("httpservice21" + x);
-//         (config.headers as AxiosHeaders).set('Authorization', 'Bearer ' + x);
-//       }
-//     });
-//     AsyncStorage.getItem('aspboilerplate:tenant').then((x: any) => {
-//       console.log("httpservice26" + x)
-//       if (x) {
-//         console.log("httpservice27" + x);
-//         (config.headers as AxiosHeaders).set('AspBoilerplate.TenantId', x);
-//       }
-//     });
+http.interceptors.request.use(
+  function (config) {
+    AsyncStorage.getItem('aspboilerplate:token').then((x: any) => {
+      console.log("httpservice18" + x)
+      if (x) {
+        console.log("httpservice21" + x);
+        (config.headers as AxiosHeaders).set('Authorization', 'Bearer ' + x);
+      }
+    });
+    AsyncStorage.getItem('aspboilerplate:tenant').then((x: any) => {
+      console.log("httpservice26" + x)
+      if (x) {
+        console.log("httpservice27" + x);
+        (config.headers as AxiosHeaders).set('AspBoilerplate.TenantId', x);
+      }
+    });
 
-//     // config.headers.common['.AspNetCore.Culture'] = datamind.utils.getCookieValue('Abp.Localization.CultureName');
-//     return config;
-//   },
-//   function (error) {
-//     return Promise.reject(error);
-//   }
-// );
+    // config.headers.common['.AspNetCore.Culture'] = datamind.utils.getCookieValue('Abp.Localization.CultureName');
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
 
 // http.interceptors.response.use(
 //   response => {

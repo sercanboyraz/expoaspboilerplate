@@ -6,30 +6,6 @@ import Login from '../../scenes/login/login';
 import Roles from '../../scenes/role/roles';
 import Users from '../../scenes/user/users';
 
-export const userRouters: any[] = [
-    {
-        name: 'login',
-        permission: '',
-        title: 'Login',
-        component: Login,
-        showInMenu: true,
-    },
-    {
-        name: 'resetPasswordScreen',
-        permission: '',
-        title: 'ResetPasswordScreen',
-        component: ResetPasswordScreen,
-        showInMenu: true,
-    },
-    {
-        name: 'registerScreen',
-        permission: '',
-        title: 'RegisterScreen',
-        component: RegisterScreen,
-        showInMenu: true,
-    }
-];
-
 export const appRouters: any[] = [
     {
         name: 'home',
@@ -51,7 +27,31 @@ export const appRouters: any[] = [
         title: 'Roles',
         component: Roles,
         showInMenu: true,
+    },
+    {
+        name: 'login',
+        permission: '',
+        title: 'Login',
+        component: Login,
+        showInMenu: false,
+        noHeader:true
+    },
+    {
+        name: 'resetPasswordScreen',
+        permission: '',
+        title: 'ResetPasswordScreen',
+        component: ResetPasswordScreen,
+        showInMenu: false,
+        noHeader:true
+    },
+    {
+        name: 'registerScreen',
+        permission: '',
+        title: 'RegisterScreen',
+        component: RegisterScreen,
+        showInMenu: false,
+        noHeader:true
     }
 ];
 
-export const routers = [...userRouters, ...appRouters];
+export const routers = [...appRouters];

@@ -28,8 +28,8 @@ export interface ILoginState {
 @observer
 class Login extends Component<ILoginProps, ILoginState> {
     state = {
-        email: { value: "", error: "" },
-        password: { value: "", error: "" }
+        email: { value: "admin", error: "" },
+        password: { value: "123qwe", error: "" }
     }
 
     async onLogin() {
@@ -48,7 +48,7 @@ class Login extends Component<ILoginProps, ILoginState> {
                 }).then(async x => {
                     var userIdValidation = await AsyncStorage.getItem('aspboilerplate:userId');
                     Number.parseInt(userIdValidation) > 0 &&
-                        this.props.navigation.navigate('home', { screen: 'Home' })
+                        this.props.navigation.navigate('Roles', { screen: 'Roles' })
                 })
         }
         // navigation.reset({

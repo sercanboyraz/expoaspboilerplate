@@ -1,12 +1,12 @@
 const ENV = {
   dev: {
-    apiUrl: 'https://localhost:44311/',
+    apiUrl: 'http://172.20.10.3/',
     localization: {
       defaultResourceName: 'Mobile',
     },
   },
   prod: {
-    apiUrl: 'http://192.168.1.101:44332',
+    apiUrl: 'https://192.168.1.101:44332',
     localization: {
       defaultResourceName: 'Mobile',
     },
