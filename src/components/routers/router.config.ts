@@ -33,7 +33,7 @@ export const appRouters: any[] = [
         permission: '',
         title: 'Login',
         component: Login,
-        showInMenu: false,
+        showInMenu: true,
         noHeader:true
     },
     {
@@ -41,7 +41,7 @@ export const appRouters: any[] = [
         permission: '',
         title: 'ResetPasswordScreen',
         component: ResetPasswordScreen,
-        showInMenu: false,
+        showInMenu: true,
         noHeader:true
     },
     {
@@ -49,7 +49,7 @@ export const appRouters: any[] = [
         permission: '',
         title: 'RegisterScreen',
         component: RegisterScreen,
-        showInMenu: false,
+        showInMenu: true,
         noHeader:true
     }
 ];
