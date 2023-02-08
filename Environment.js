@@ -1,6 +1,6 @@
 const ENV = {
   dev: {
-    apiUrl: 'http://172.20.10.3/',
+    apiUrl: 'http://78.188.3.212:38080/webapi/',
     localization: {
       defaultResourceName: 'Mobile',
     },
